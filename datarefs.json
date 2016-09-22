@@ -1,0 +1,45 @@
+{
+    "server": {
+        "udp": {
+            "ip": "127.0.0.1",
+            "port": 51000
+        },
+        "http": {
+            "port": 9999
+        }
+    },
+    "sim":
+    {
+        "interval": 0.5,
+        "datarefs": [
+            {
+                "name":"tail",
+                "dataref":"sim/aircraft/view/acf_tailnum"
+            },
+            {
+                "name":"latitude",
+                "dataref":"sim/flightmodel/position/latitude"
+            },
+            {
+                "name":"longitude",
+                "dataref":"sim/flightmodel/position/longitude"
+            },
+            {
+                "name":"speed",
+                "dataref":"sim/flightmodel/position/indicated_airspeed"
+            },
+            {
+                "name":"heading",
+                "dataref":"sim/cockpit2/gauges/indicators/compass_heading_deg_mag"
+            },
+            {
+                "name":"altitude",
+                "dataref":"sim/cockpit2/pressurization/actuators/cabin_altitude_ft"
+            },
+            {
+                "name":"iff",
+                "dataref":"sim/cockpit/radios/transponder_code"
+            }
+        ]
+    }
+}
