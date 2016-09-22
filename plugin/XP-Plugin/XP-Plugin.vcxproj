@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{2993111F-F931-4C5D-ADCE-FB8FBA936B7D}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>XP-JSON</RootNamespace>
+    <ProjectName>XP-JSON</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetExt>.xpl</TargetExt>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetName>XP-JSON</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>XP-JSON</TargetName>
+    <TargetExt>.xpl</TargetExt>
+    <LibraryPath>$(VCInstallDir)lib;$(VCInstallDir)atlmfc\lib;$(WindowsSdkDir)lib;$(FrameworkSDKDir)\lib;$(SolutionDir)\XPlane\lib</LibraryPath>
+    <ReferencePath>$(VCInstallDir)atlmfc\lib;$(VCInstallDir)lib;$(SolutionDir)\XPlane\lib</ReferencePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SIMDATA_EXPORTS;IBM=1;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>SDK\CHeaders\XPLM;SDK\CHeaders\Widgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>SDK\Libraries\Win;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;Opengl32.lib;odbc32.lib;odbccp32.lib;XPLM.lib;XPWidgets.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PreBuildEvent>
+      <Command>
+      </Command>
+    </PreBuildEvent>
+    <PreLinkEvent>
+      <Command>
+      </Command>
+    </PreLinkEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(SolutionDir)\XPlane\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <Version>1.0</Version>
+      <AdditionalLibraryDirectories>$(SolutionDir)\XPlane\lib</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="mongoose\mongoose.h" />
+    <ClInclude Include="rapidjson\allocators.h" />
+    <ClInclude Include="rapidjson\document.h" />
+    <ClInclude Include="rapidjson\encodedstream.h" />
+    <ClInclude Include="rapidjson\encodings.h" />
+    <ClInclude Include="rapidjson\error\en.h" />
+    <ClInclude Include="rapidjson\error\error.h" />
+    <ClInclude Include="rapidjson\filereadstream.h" />
+    <ClInclude Include="rapidjson\filestream.h" />
+    <ClInclude Include="rapidjson\filewritestream.h" />
+    <ClInclude Include="rapidjson\internal\dtoa.h" />
+    <ClInclude Include="rapidjson\internal\itoa.h" />
+    <ClInclude Include="rapidjson\internal\meta.h" />
+    <ClInclude Include="rapidjson\internal\pow10.h" />
+    <ClInclude Include="rapidjson\internal\stack.h" />
+    <ClInclude Include="rapidjson\internal\strfunc.h" />
+    <ClInclude Include="rapidjson\memorybuffer.h" />
+    <ClInclude Include="rapidjson\memorystream.h" />
+    <ClInclude Include="rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="rapidjson\prettywriter.h" />
+    <ClInclude Include="rapidjson\rapidjson.h" />
+    <ClInclude Include="rapidjson\reader.h" />
+    <ClInclude Include="rapidjson\stringbuffer.h" />
+    <ClInclude Include="rapidjson\writer.h" />
+    <ClInclude Include="SDK\CHeaders\Widgets\XPStandardWidgets.h" />
+    <ClInclude Include="SDK\CHeaders\Widgets\XPUIGraphics.h" />
+    <ClInclude Include="SDK\CHeaders\Widgets\XPWidgetDefs.h" />
+    <ClInclude Include="SDK\CHeaders\Widgets\XPWidgets.h" />
+    <ClInclude Include="SDK\CHeaders\Widgets\XPWidgetsEx.h" />
+    <ClInclude Include="SDK\CHeaders\Widgets\XPWidgetUtils.h" />
+    <ClInclude Include="SDK\CHeaders\Wrappers\XPCBroadcaster.h" />
+    <ClInclude Include="SDK\CHeaders\Wrappers\XPCDisplay.h" />
+    <ClInclude Include="SDK\CHeaders\Wrappers\XPCListener.h" />
+    <ClInclude Include="SDK\CHeaders\Wrappers\XPCProcessing.h" />
+    <ClInclude Include="SDK\CHeaders\Wrappers\XPCWidget.h" />
+    <ClInclude Include="SDK\CHeaders\Wrappers\XPCWidgetAttachments.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMCamera.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMDataAccess.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMDefs.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMDisplay.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMGraphics.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMMenus.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMNavigation.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMPlanes.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMPlugin.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMProcessing.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMScenery.h" />
+    <ClInclude Include="SDK\CHeaders\XPLM\XPLMUtilities.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="main.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </PrecompiledHeader>
+      <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="mongoose\mongoose.c" />
+    <ClCompile Include="SDK\CHeaders\Widgets\XPListBox.cpp" />
+    <ClCompile Include="SDK\CHeaders\Widgets\XPPopups.cpp" />
+    <ClCompile Include="SDK\CHeaders\Wrappers\XPCBroadcaster.cpp" />
+    <ClCompile Include="SDK\CHeaders\Wrappers\XPCDisplay.cpp" />
+    <ClCompile Include="SDK\CHeaders\Wrappers\XPCListener.cpp" />
+    <ClCompile Include="SDK\CHeaders\Wrappers\XPCProcessing.cpp" />
+    <ClCompile Include="SDK\CHeaders\Wrappers\XPCWidget.cpp" />
+    <ClCompile Include="SDK\CHeaders\Wrappers\XPCWidgetAttachments.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="SDK\Libraries\Win\XPLM.lib" />
+    <Library Include="SDK\Libraries\Win\XPLM_64.lib" />
+    <Library Include="SDK\Libraries\Win\XPWidgets.lib" />
+    <Library Include="SDK\Libraries\Win\XPWidgets_64.lib" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

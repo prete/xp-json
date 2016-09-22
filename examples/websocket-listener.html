@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>Websocket Example | JSON X-Plane </title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container-fluid">  
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-xs btn-primary btn-block" onclick="createWebSocket()">OPEN</button>
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-xs btn-danger btn-block" onclick="closeWebSocket()">CLOSE</button>
+            </div>
+        </div>
+        <div class="row">
+            <table id="websocket-table" class="table table-condensed table-striped table-hover">
+                <tbody>
+                    <tr><th>Websocket Messages</th></tr>
+                </tbody>
+            </table>    
+        </div>
+      </div>
+      
+      <script language="javascript" type="text/javascript">
+        var websocket = {}
+        var table = document.getElementById('websocket-table').getElementsByTagName('tbody')[0];
+        
+        function createWebSocket(){
+            //create websocket
+            websocket = new WebSocket('ws://127.0.0.1:9999/ws');
+            
+            //define event handlers 
+            websocket.onopen = function(ev)  {
+                var row = table.insertRow(1);
+                row.className += ' success';
+                row.insertCell(0).appendChild(document.createTextNode('opened: '+JSON.stringify(ev)));                
+            };                        
+            websocket.onerror = function(ev) {
+                var row = table.insertRow(1);
+                row.insertCell(0).appendChild(document.createTextNode('error: '+JSON.stringify(ev)));
+                row.className += ' danger';
+            };
+            websocket.onclose = function(ev) {
+                var row = table.insertRow(1);
+                row.insertCell(0).appendChild(document.createTextNode('closed: '+JSON.stringify(ev)));
+                row.className += ' warning';
+            };
+            websocket.onmessage = function(ev) {
+                var row = table.insertRow(1);
+                row.insertCell(0).appendChild(document.createTextNode(ev.data));
+            };
+        }
+        
+        function closeWebSocket(){   
+            //unload handlers and close
+            websocket.onopen = function(){};
+            websocket.onmessage = function(){};
+            websocket.onerror = function(){};
+            websocket.onclose = function(){};
+            websocket.close();
+        }        
+    </script>
+  </body>
+</html>
