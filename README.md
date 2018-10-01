@@ -1,6 +1,6 @@
-#X-Plane JSON
+# X-Plane JSON
 
-##What's this?
+## What's this?
 
 X-Plane plugin that allows broadcast of **JSON data** instead of the build-in UDP packages.
 
